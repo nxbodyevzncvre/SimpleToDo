@@ -8,14 +8,13 @@ export default function Home() {
   const [card, setCard] = useState<string>("");
   const [search, setSearch] = useState<string>("");
 
-  // Функция для обновления имени задачи
   const updateCardName = (oldName: string, newName: string) => {
     setCards((prevCards) =>
       prevCards.map((card) => (card === oldName ? newName : card))
     );
   };
 
-  // Фильтрация задач по поисковому запросу
+
   const filteredCards = cards.filter((name) =>
     name.toLowerCase().includes(search.toLowerCase())
   );
@@ -27,7 +26,7 @@ export default function Home() {
           Todo List
         </h1>
 
-        {/* Поиск */}
+
         <input
           type="text"
           value={search}
@@ -36,7 +35,7 @@ export default function Home() {
           placeholder="Search todos..."
         />
 
-        {/* Список задач */}
+
         <div className="w-full flex flex-col gap-4">
           {filteredCards.map((name: string) => (
             <TodoCard
@@ -48,7 +47,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Добавление новой задачи */}
+
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -78,7 +77,6 @@ export default function Home() {
           </button>
         </form>
 
-        {/* Информация о лимите задач */}
         {cards.length >= 4 && (
           <p className="mt-4 text-sm text-red-500">
             Maximum of 4 tasks allowed.
